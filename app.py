@@ -10,9 +10,11 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 
+st.image("path_to_your_image.jpg", caption="Votre légende ici", use_column_width=True)
+
 # Titre de l'application
 st.title('Extraction automatisée de tâches pour la gestion des essais cliniques')
-st.subheader('Datathon Défin n 12')
+st.subheader('Datathon Défi n 12')
 
 # Téléchargement du fichier PDF
 uploaded_file = st.file_uploader("Télécharger un fichier PDF", type="pdf")
