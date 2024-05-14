@@ -82,10 +82,15 @@ if uploaded_file is not None:
             # Vérifier que le DataFrame contient au moins 3 lignes et 4 colonnes
             if df.shape[0] >= 3 and df.shape[1] >= 4:
                 # Créer un CRF pour chaque jour
+                unique_key_counter = 0
                 for column in range(3, len(df.columns)):
                     doc = Document()
                     cycle_info = str(df.iloc[0, column]).strip().replace('/', '-').replace('\\', '-')
                     day_info = str(df.iloc[1, column]).strip().replace('/', '-').replace('\\', '-')
+                    
+                    if cycle_info.lower() == 'nan' or day_info.lower() == 'nan':
+                        st.write(f"Cycle info or day info is NaN at column {column}")
+                        continue
 
                     doc.add_heading(f'Cycle: {cycle_info}', level=1)
                     doc.add_heading(f'Day: {day_info}', level=2)
@@ -124,14 +129,15 @@ if uploaded_file is not None:
                         with open(chemin_complet, "rb") as f:
                             st.download_button(
                                 label=f"Télécharger {filename}",
-                                data=f,
+                                data=f.read(),
                                 file_name=filename,
-                                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                key=f"download_button_{unique_key_counter}"
                             )
+                            unique_key_counter += 1
                     except Exception as e:
                         st.write(f"Impossible de sauvegarder le document {filename}: {e}")
             else:
                 st.write("Le DataFrame ne contient pas assez de lignes ou de colonnes pour procéder.")
         else:
             st.write("Aucune table trouvée à la page 11")
-
