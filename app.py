@@ -33,6 +33,9 @@ if uploaded_file is not None:
             # Convertir les données du tableau en DataFrame Pandas
             df = pd.DataFrame(table)
             
+            # Remplir les cellules vides avec la valeur précédente
+            df.ffill(axis=1, inplace=True)
+            
             # Afficher le DataFrame
             st.write("Tableau extrait de la page 11 du PDF :")
             st.dataframe(df)
