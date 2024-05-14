@@ -11,7 +11,7 @@ from docx.oxml.ns import qn
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 
 # Titre de l'application
-st.title('Extraction automatisée de tâches pour la gestion des essais cliniques')
+st.title('Extraction de Tableau et Génération de Documents')
 
 # Téléchargement du fichier PDF
 uploaded_file = st.file_uploader("Télécharger un fichier PDF", type="pdf")
