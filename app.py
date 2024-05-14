@@ -84,14 +84,14 @@ if uploaded_file is not None:
                 # Créer un CRF pour chaque jour pour les colonnes 3 à 14
                 unique_key_counter = 0
                 for column in range(3, 15):
-                    doc = Document()
                     cycle_info = str(df.iloc[0, column]).strip().replace('/', '-').replace('\\', '-')
                     day_info = str(df.iloc[1, column]).strip().replace('/', '-').replace('\\', '-')
                     
                     if cycle_info.lower() == 'nan' or day_info.lower() == 'nan':
                         st.write(f"Cycle info or day info is NaN at column {column}")
                         continue
-
+                    
+                    doc = Document()
                     doc.add_heading(f'Cycle: {cycle_info}', level=1)
                     doc.add_heading(f'Day: {day_info}', level=2)
 
