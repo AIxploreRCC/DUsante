@@ -3,6 +3,7 @@ import pdfplumber
 import pandas as pd
 import os
 import re
+from io import BytesIO
 from docx import Document
 from docx.shared import Inches
 from docx.oxml import OxmlElement
@@ -118,9 +119,19 @@ if uploaded_file is not None:
                     try:
                         doc.save(chemin_complet)
                         st.write(f"Document généré: {filename}")
+                        
+                        # Préparer le document pour le téléchargement
+                        with open(chemin_complet, "rb") as f:
+                            st.download_button(
+                                label=f"Télécharger {filename}",
+                                data=f,
+                                file_name=filename,
+                                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                            )
                     except Exception as e:
                         st.write(f"Impossible de sauvegarder le document {filename}: {e}")
             else:
                 st.write("Le DataFrame ne contient pas assez de lignes ou de colonnes pour procéder.")
         else:
             st.write("Aucune table trouvée à la page 11")
+
