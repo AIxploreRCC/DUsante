@@ -1,1 +1,4 @@
-streamlit pdfplumber pandas python-docx
+streamlit 
+pdfplumber 
+pandas 
+python-docx
