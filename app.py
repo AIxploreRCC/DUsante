@@ -79,11 +79,11 @@ if uploaded_file is not None:
             # Lire le fichier CSV dans un DataFrame
             df = pd.read_csv("output_table.csv")
 
-            # Vérifier que le DataFrame contient au moins 3 lignes et 4 colonnes
-            if df.shape[0] >= 3 and df.shape[1] >= 4:
-                # Créer un CRF pour chaque jour
+            # Vérifier que le DataFrame contient au moins 3 lignes et 14 colonnes
+            if df.shape[0] >= 3 and df.shape[1] >= 14:
+                # Créer un CRF pour chaque jour pour les colonnes 3 à 14
                 unique_key_counter = 0
-                for column in range(3, len(df.columns)):
+                for column in range(3, 15):
                     doc = Document()
                     cycle_info = str(df.iloc[0, column]).strip().replace('/', '-').replace('\\', '-')
                     day_info = str(df.iloc[1, column]).strip().replace('/', '-').replace('\\', '-')
