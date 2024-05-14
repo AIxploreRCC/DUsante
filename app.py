@@ -10,7 +10,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 
-st.image("path_to_your_image.jpg", caption="Votre légende ici", use_column_width=True)
+st.image("datathon_web.png", use_column_width=True)
 
 # Titre de l'application
 st.title('Extraction automatisée de tâches pour la gestion des essais cliniques')
